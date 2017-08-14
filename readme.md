@@ -29,7 +29,7 @@ Using command line tool, e.g. Terminal
 
 A browser window should open running at localhost:9000 showing you events for review
 
-![Event Checker](http://i68.tinypic.com/2qs7aip.png)
+![Event Checker](https://i.imgur.com/DQMkbK4.jpg)
 
 ## How It Works
 
