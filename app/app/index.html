@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Popular Concert Checker 0.1</title>
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+    
+  </head>
+  <body>
+    <!--[if IE]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <div class="brand">
+      <h1>Songkick<br />Concerts Review <span>0.1</span></h1>
+      <p>Protecting fans from bad Songkick concert data,<br /> since yesterday.</p>
+      <p>Displays events for top 1,000 artists, created in last 24 hrs. Ordered by popularity of artist.</p>
+      <div class="filter">
+          <a href="#" class="filter-all" data-action="all">all</a> 
+          <a href="#" class="filter-unchecked  active" data-action="unchecked"> to check</a> 
+          <a href="#" class="filter-questionable" data-action="questionable">questionable</a> 
+          <a href="#" class="filter-noticket" data-action="no-ticket">no ticket link</a>
+      </div>
+      <div class="stat-created">Events created in last 24 hours: <span>0</span></div>
+      <div class="stat-check">Events to check: <span>0</span></div>
+      <div class="stat-questionable">Events deemed questionable: <span>0</span></div>
+      <div class="stat-noticket">Events with no ticket link: <span>0</span></div>
+      
+    </div>
+    <div class="content">
+          
+
+      <div class="no-more"><div class="loader"></div></div>
+    </div>
+    
+  
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/tether/dist/js/tether.js"></script>
+    <script src="/bower_components/mustache.js/mustache.js"></script>
+    <script src="/bower_components/handlebars/handlebars.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    
+    <!-- build:js scripts/plugins.js -->
+    <script src="/bower_components/bootstrap/js/dist/util.js"></script>
+    <script src="/bower_components/bootstrap/js/dist/alert.js"></script>
+    <script src="/bower_components/bootstrap/js/dist/button.js"></script>
+    <script src="/bower_components/bootstrap/js/dist/carousel.js"></script>
+    <script src="/bower_components/bootstrap/js/dist/collapse.js"></script>
+    <script src="/bower_components/bootstrap/js/dist/dropdown.js"></script>
+    <script src="/bower_components/bootstrap/js/dist/modal.js"></script>
+    <script src="/bower_components/bootstrap/js/dist/scrollspy.js"></script>
+    <script src="/bower_components/bootstrap/js/dist/tab.js"></script>
+    <script src="/bower_components/bootstrap/js/dist/tooltip.js"></script>
+    <script src="/bower_components/bootstrap/js/dist/popover.js"></script>
+    <!-- endbuild -->
+    <script id="date-template" type="text/x-handlebars-template">
+      {{#each this}}
+      <div class="date-container">    
+        <div class="date">
+          <img src="http://images.sk-static.com/images/media/profile_images/artists/{{artistID}}/huge_avatar" />
+          <div class="info">
+            <h1>{{artist}}</h1>
+            <div class="series">
+              {{#if isFestival}}{{series}}{{else}}{{venue}}{{/if}}
+            </div>
+            <div class="location">
+              {{location}}
+            </div>
+            <div class="cal">
+              {{day}} {{month}}, {{year}}
+            </div>
+          </div>
+          <div class="locked">
+              {{#if locked}}🔒{{/if}}
+          </div> 
+          <div class="kind">
+            {{kind}} show
+          </div>          
+          <div class="created">
+            Created: {{created}}
+          </div>
+          <div class="cta">
+            <a href="http://www.songkick.com/concerts/{{eventID}}" class="pad" target="_blank">Songkick.com</a>
+            {{#if ticketLink}}
+              <a href="{{ticketLink}}" class="ticket-link" target="_blank">Ticket Link</a>
+            {{/if}}          
+          </div>
+        </div>
+
+        <div class="controls">
+            <div class="action" data-event="{{eventID}}" id="action-{{eventID}}">
+              <a href="#" class="verify real" data-action="real">✌🏼</a> <a href="#" class="verify fake" data-action="fake"><span>👎🏼</span></a>
+            </div>
+            <div class="links">
+            <h3>Useful Links To Check Concert</h3>
+            <a href="https://www.google.com/#q={{artist}}+at+{{venue}},+{{location}}+on+{{month}} {{day}}" target="_blank">Google It</a>
+            <a href="https://www.google.com/#q={{artist}}+official+website" target="_blank">Artist Website</a>
+            <a href="https://www.facebook.com/search/pages/?q={{artist}}" target="_blank">Artist Facebook</a>
+            {{#if isFestival}}
+              <a href="https://www.google.com/#q={{series}}+official+website" target="_blank">Festival Website</a>
+            {{else}}
+              <a href="https://www.google.com/#q={{venue}}+{{location}}+official+website" target="_blank">Venue Website</a>
+            {{/if}}
+            <h3>Admin Links</h3>
+            <a href="https://www.songkick.com/admin/events/{{eventID}}" target="_blank">Event</a>
+            <a href="https://www.songkick.com/admin/events/{{eventID}}/tickets" target="_blank">Tickets</a>
+            <a href="https://www.songkick.com/admin/artists/{{artistID}}" target="_blank">Artist</a>
+            <a href="https://www.songkick.com/admin/artists/{{artistID}}/calendar/edit/" target="_blank">Artist Calendar</a>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+    </script>
+
+    <!-- build:js scripts/main.js -->
+    <script src="scripts/main.js"></script>
+    <!-- endbuild -->
+  </body>
+</html>

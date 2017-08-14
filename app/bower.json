@@ -1,0 +1,23 @@
+{
+  "name": "app",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "~4.0.0-alpha.6",
+    "mustache.js": "mustache#^2.3.0",
+    "handlebars": "^4.0.10"
+  },
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "scss/bootstrap.scss",
+        "dist/js/bootstrap.js"
+      ]
+    }
+  },
+  "devDependencies": {
+    "chai": "^4.0.2",
+    "mocha": "^3.4.2",
+    "mustache.js": "mustache#^2.3.0",
+    "handlebars": "^4.0.10"
+  }
+}

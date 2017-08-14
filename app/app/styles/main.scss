@@ -1,0 +1,411 @@
+// bower:scss
+@import "bower_components/bootstrap/scss/bootstrap.scss";
+// endbower
+
+$pink: #f80046;
+$yellow: #E09410;
+$green: #008F00;
+$blue: #007297;
+$black: #3a3a3a;
+
+/* Space out content a bit */
+body {
+  font-family: helvetica neue, sans-serif;
+  margin: 0;
+  padding: 20px 0;
+  background: #f2f2f2;
+  background: url("https://www.toptal.com/designers/subtlepatterns/patterns/confectionary.png") repeat top left #f2f2f2;  
+  text-shadow: 1px 1px 0 rgba(0,0,0,.4);
+  background-attachment: fixed;
+}
+
+h1 {
+  margin:0;
+  padding:0;
+  margin-bottom: 8px;
+  font-size: 32px;
+}
+
+.brand {
+  text-shadow: 1px 1px 1px rgba(255,255,255,.6);
+  position: fixed;
+  left: 0px;
+  top:20px;
+  padding: 20px;
+  font-size: 14px;
+  width: 420px;
+
+  h1 {
+    font-family: Abril Fatface, serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 4px;
+    font-size: 32px;
+
+    span {
+      font-size: 16px;
+      position: relative;
+      top:-12px;
+    }
+  }
+
+  span {font-weight: 700;}
+  .stat-created span {color: $blue;}
+  .stat-questionable span {color: $yellow;}
+  .stat-check span {color: $pink;}
+  .stat-noticket span {color: $green;}
+
+  .filter {
+    margin: 20px 0;
+
+    a {
+      display: inline-block;
+      font-weight: 700;
+      font-size: 15px;
+      margin-bottom: 4px;
+      margin-right: 8px;
+    }
+
+    a.active, a:hover, a:active {
+      border-bottom: 2px solid;
+      text-decoration: none;
+    }
+
+    a.filter-all, a {
+      color: $blue;
+    }
+
+    a.filter-unchecked {
+      color: $pink;
+    }
+
+    a.filter-questionable {
+      color: $yellow;
+    }
+
+    a.filter-good {
+      color: $black;
+    }
+
+     a.filter-noticket {
+      color: $green;
+    }
+  }
+
+}
+
+.content {
+  width: 360px;
+  margin: 0 auto;
+}
+
+.date-container {
+  position: relative;
+  text-align: center;
+}
+
+.hide {
+  display: none;
+}
+
+.date {
+  text-align: left;
+  height: 360px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+  padding: 16px;
+  box-sizing: border-box;
+  background-color: #222;
+  margin: 32px 0;
+  border-radius: 7px;
+  border:1px solid rgba(0,0,0,.6);
+  box-shadow: 0 0 16px rgba(0,0,0,.4);
+  font-size:17px;
+  transition-duration: .3s;
+  display: inline-block;
+
+
+  img {
+    position: absolute;
+    height: 358px;
+    width: 358px;
+    left:0;
+    top:0;
+    z-index: 1;
+    filter: saturate(.3) brightness(.5);
+    border-radius: 6px;
+    user-drag: none; 
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;  
+  }
+
+  .info {
+    position: relative;
+    z-index: 2;
+    line-height: 1.1em;
+
+    .series {
+      margin-bottom:4px;
+    }
+  }
+
+
+  .cal {
+    margin-top:12px;
+    font-size:14px; 
+  }
+
+  .locked {
+    position: absolute;
+    font-size:12px;
+    bottom: 50px;
+    left:14px;
+    z-index: 2;
+    opacity: .8;
+  }
+
+  .kind {
+    position: absolute;
+    font-size:12px;
+    bottom: 32px;
+    z-index: 2;
+    opacity: .8;
+  }
+
+  .created {
+    position: absolute;
+    font-size:12px;
+    bottom: 15px;
+    z-index: 2;
+    opacity: .8;
+  }
+
+  .cta {
+    position: absolute;
+    z-index: 2;
+    right: 16px;
+    bottom: 16px;
+
+    a {
+      display: block;
+      text-align: center;
+      font-size: 14px;
+      padding: 4px 36px;
+      margin-top: 8px;
+      background: rgba(0,0,0,.7);
+      border-radius: 4px;
+      color: #fff;
+      text-shadow: none;
+      transition-duration: .3s;
+      border:1px solid rgba(0,0,0,.2);
+      box-shadow: 0 0 16px rgba(0,0,0,.4);
+}
+
+    a:hover, a:active {
+      text-decoration: none;
+      background: #fff;
+      color: #111;
+    }
+
+    a.pad {
+      background:$pink;
+    }
+
+    a.pad:hover {
+      background:darken( $pink, 10% );
+      color: #fff;
+    }
+
+    a.ticket-link {
+      background:$green;
+    }
+
+    a.ticket-link:hover {
+      background:darken( $green, 10% );
+      color: #fff;
+    }
+
+    .ticket-missing {
+      font-size: 12px;
+      padding: 8px 0px 0;
+      display: inline-block;
+      text-align: right;
+      display: block;
+    }
+  }
+}
+
+.controls {
+    position: absolute;
+    text-align: left;
+    text-shadow: 1px 1px 1px rgba(255,255,255,.6);
+    left:50%;
+    margin-left:220px;
+    top:32px;
+    display: inline-block;
+    width: 300px;
+
+    h3 {
+      font-size: 16px;
+      margin: 0;
+      padding: 0;
+      margin-top:16px;
+      margin-bottom: 4px;
+    }
+
+    a {
+      display: block;
+      font-size: 14px;
+      color: $pink;
+      text-decoration: underline;
+      margin-top:2px;
+    }
+
+    .action {
+
+      margin-bottom:24px;
+
+      a {
+        text-decoration: none;
+      }
+      
+      .verify {
+        display: inline-block;
+        border-radius: 48px;
+        line-height: 48px;
+        height: 48px;
+        width:48px;
+        text-align: center;
+        font-size: 24px;
+        background:#fff;
+        margin-right: 4px;
+        border:1px solid rgba(0,0,0,.1);
+        text-shadow: none;      
+      }
+
+      .fake {
+        span {
+          position: relative;
+          top:2px;
+        }
+      }
+
+      .real:hover, .real-tag {
+        background: $green;
+        box-shadow: 0 0 12px rgba(0,0,0,.3);
+      }
+
+      .fake:hover, .fake-tag {
+        background: $yellow;
+        box-shadow: 0 0 12px rgba(0,0,0,.3);
+      }
+
+    }
+}
+
+.no-more {
+  margin-top:80px;
+  text-shadow: none;
+  font-size: 14px;
+  color:#666;
+  text-align: center;
+  font-weight: bold;
+  color: $pink;
+}
+
+$animation-duration: 1.8s;
+
+.loader {
+  margin: 0 auto;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 8px;
+  background: $pink;
+  border-radius: 2px;
+  animation: load $animation-duration ease-in-out infinite; 
+  &:before, &:after {
+    position: absolute; 
+    display: block;
+    content: "";
+    animation: load $animation-duration ease-in-out infinite;
+    height: 8px;
+    border-radius: 2px;
+  }
+    &:before {
+    top: -20px;
+    left: 10px;
+    width: 20px;
+    background: $green;
+  }
+  &:after {
+    bottom: -20px;
+    width: 24px;
+    background: $yellow; 
+  }
+}
+
+@keyframes load {
+  0% {
+    transform: translateX(40px);
+  }
+  
+  50% {
+    transform: translateX(-30px);
+  }
+  100% {
+    transform: translateX(40px);
+  }
+}
+
+
+/* Customize container */
+@media (min-width: 48em) {
+  .container {
+    max-width: 46rem;
+  }
+}
+.container-narrow > hr {
+  margin: 2rem 0;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+  text-align: center;
+  border-bottom: .05rem solid #e5e5e5;
+}
+.jumbotron .btn {
+  padding: .75rem 1.5rem;
+  font-size: 1.5rem;
+}
+
+/* Supporting marketing content */
+.marketing {
+  margin: 3rem 0;
+}
+.marketing p + h4 {
+  margin-top: 1.5rem;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 48em) {
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 2rem;
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}
