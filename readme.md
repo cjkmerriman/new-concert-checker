@@ -10,22 +10,18 @@ These instructions will get you a copy of the prototype up and running on your l
 
 The below need to be available on your local machine. In my case the PHP root is in my Sites folder.
 
-```
 * Node 6.9
 * PHP 7
-```
 
 ### Installing
 
 Using command line tool, e.g. Terminal
 
-```
 1. Clone the repo to Sites folder or similar on your machine
 1. Open server/check-popular.php and provide database credentials, save & close.
 1. Change to app directory and run `npm install`
 1. Connect to SK VPN
 1. Enter `gulp serve`
-```
 
 A browser window should open running at localhost:9000 showing you events for review
 
